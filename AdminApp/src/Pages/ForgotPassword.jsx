@@ -13,7 +13,7 @@ const ForgotPassword = () => {
   const [errors, setErrors] = useState({});
   const inputRefs = useRef([]);
 
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = import.meta.env.VITE_API_URL || "https://thimdorji-backend-5.onrender.com";
 
   // 🔹 Styles (same)
   const pageStyle = {
