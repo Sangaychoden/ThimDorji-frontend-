@@ -9,6 +9,10 @@ const Sidebar = () => {
   const menuItems = [
     { path: "/dashboard", label: "DASHBOARD" },
     { path: "/booking", label: "BOOKING" },
+    // { path: "/booking-form", label: "BOOKING FORM" },
+
+    
+    
   ];
 
   const handleLogout = () => {

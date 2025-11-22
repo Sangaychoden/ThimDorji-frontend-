@@ -1,9 +1,9 @@
-// // src/AppRouter.jsx
+
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import Login from "./Pages/Login";
 // import Dashboard from "./Pages/Dashboard";
 // import Booking from "./Pages/Booking";
-// import BookingDetails from "./Pages/BookingDetails"; // <-- new
+// import BookingDetails from "./Pages/BookingDetails"; // Booking details page
 // import AdminLayout from "./Components/AdminLayout";
 
 // const AppRouter = () => {
@@ -14,7 +14,7 @@
 //         <Route path="/" element={<Login />} />
 //         <Route path="/login" element={<Login />} />
 
-//         {/* Admin Pages using Layout */}
+//         {/* Admin Pages with layout */}
 //         <Route
 //           path="/dashboard"
 //           element={
@@ -33,8 +33,9 @@
 //           }
 //         />
 
+//         {/* ✅ Supports both /booking-details and /booking-details/:id */}
 //         <Route
-//           path="/booking-details"
+//           path="/booking-details/:id?"
 //           element={
 //             <AdminLayout>
 //               <BookingDetails />
@@ -42,19 +43,19 @@
 //           }
 //         />
 
-//         {/* Add more admin pages here */}
+//         {/* Add more admin routes here */}
 //       </Routes>
 //     </Router>
 //   );
 // };
 
 // export default AppRouter;
-// src/AppRouter.jsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./Pages/Login";
 import Dashboard from "./Pages/Dashboard";
 import Booking from "./Pages/Booking";
-import BookingDetails from "./Pages/BookingDetails"; // Booking details page
+import BookingDetails from "./Pages/BookingDetails"; 
+import BookingFormPage from "./Pages/BookingFormPage";  // ✅ NEW PAGE ADDED
 import AdminLayout from "./Components/AdminLayout";
 
 const AppRouter = () => {
@@ -84,12 +85,22 @@ const AppRouter = () => {
           }
         />
 
-        {/* ✅ Supports both /booking-details and /booking-details/:id */}
+        {/* Booking Details */}
         <Route
           path="/booking-details/:id?"
           element={
             <AdminLayout>
               <BookingDetails />
+            </AdminLayout>
+          }
+        />
+
+        {/* ✅ NEW → Booking Form Page (same form, new page) */}
+        <Route
+          path="/booking-form/:id?"
+          element={
+            <AdminLayout>
+              <BookingFormPage />
             </AdminLayout>
           }
         />
