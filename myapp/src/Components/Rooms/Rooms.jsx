@@ -410,7 +410,7 @@
 // export default Rooms;
 import { Link } from "react-router-dom";
 import "../../Components/Testimonial/testimonials.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef  } from "react";
 import { BiChevronDown } from "react-icons/bi";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -418,6 +418,7 @@ import "./RoomsDatepicker.css";
 import { AiOutlineEye } from "react-icons/ai";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
+import { FiCalendar } from "react-icons/fi";
 
 const Rooms = () => {
   const [open, setOpen] = useState(false);
@@ -439,6 +440,9 @@ const Rooms = () => {
   const [activeImages, setActiveImages] = useState([]);
 
   const BTN_PER_USD = 85.49;
+
+  const roomRef = useRef(null);
+const guestRef = useRef(null);
 
   // Detect desktop
   useEffect(() => {
@@ -470,6 +474,21 @@ const Rooms = () => {
     fetchRooms();
   }, []);
 
+  useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (roomRef.current && !roomRef.current.contains(event.target)) {
+      setOpen(false);
+    }
+    if (guestRef.current && !guestRef.current.contains(event.target)) {
+      setGuestOpen(false);
+    }
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+  return () => document.removeEventListener("mousedown", handleClickOutside);
+}, []);
+
+
   // ✅ FIXED — correct local date (no timezone shifting)
   const formatDate = (date) =>
     date ? date.toLocaleDateString("en-CA") : "";
@@ -499,59 +518,80 @@ const Rooms = () => {
       <div className="relative">
         {/* ===== BOOKING SECTION ===== */}
         <div
-          className="Container-Hero bg-lightBlack dark:bg-normalBlack grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 items-center justify-center font-Arial py-3 lg:py-4 xl:py-5 border-t-[3px] border-t-khaki 
-          mx-auto shadow-xl relative z-20 -mt-20 px-4 sm:px-6 lg:px-10"
+          className="Container-Hero bg-lightBlack dark:bg-normalBlack grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 items-center justify-center font-Arial py-3 lg:py-4 xl:py-5 2xl:py-6 border-t-[3px] border-t-khaki 
+                     mx-auto  shadow-xl relative z-20 -mt-20 px-4 sm:px-6 lg:px-10 z-[1]"
           data-aos="fade-down"
           data-aos-duration="1000"
         >
-          {/* Check In */}
-          <div className="p-3">
-            <p className="text-sm text-[#A9A9A9] ml-3">Check In</p>
-            {!useDesktopPicker ? (
-              <input
-                type="date"
-                className="border-none bg-transparent text-white outline-none text-sm lg:text-base focus:ring-transparent"
-                required
-                onChange={(e) =>
-                  setCheckIn(e.target.value ? new Date(e.target.value) : null)
-                }
-              />
-            ) : (
-              <button
-                type="button"
-                onClick={openInOverlay}
-                className="w-full text-left text-white text-sm lg:text-base border border-white/20 px-3 py-2 mt-[2px]"
-              >
-                {checkIn ? formatDate(checkIn) : "Select date"}
-              </button>
-            )}
-          </div>
+{/* Check In */}
+<div className="p-3">
+  <p className="text-sm text-[#A9A9A9] ml-3">Check In</p>
 
-          {/* Check Out */}
-          <div className="p-3">
-            <p className="text-sm text-[#A9A9A9] ml-3">Check Out</p>
-            {!useDesktopPicker ? (
-              <input
-                type="date"
-                className="border-none bg-transparent text-white outline-none text-sm lg:text-base focus:ring-transparent"
-                required
-                onChange={(e) =>
-                  setCheckOut(e.target.value ? new Date(e.target.value) : null)
-                }
-              />
-            ) : (
-              <button
-                type="button"
-                onClick={openOutOverlay}
-                className="w-full text-left text-white text-sm lg:text-base border border-white/20 px-3 py-2 mt-[2px]"
-              >
-                {checkOut ? formatDate(checkOut) : "Select date"}
-              </button>
-            )}
-          </div>
+  {!useDesktopPicker ? (
+    <input
+      type="date"
+      className="border-none bg-transparent text-white outline-none text-sm lg:text-base focus:ring-transparent"
+      required
+      min={new Date().toISOString().split("T")[0]}
+      onChange={(e) =>
+        setCheckIn(e.target.value ? new Date(e.target.value) : null)
+      }
+    />
+  ) : (
+    <button
+      type="button"
+      onClick={openInOverlay}
+      className="w-full flex items-center justify-between
+                 border border-white/20 px-3 py-2 mt-[2px]
+                 text-white text-sm lg:text-base"
+    >
+      <span>
+        {checkIn ? formatDate(checkIn) : "Select date"}
+      </span>
+
+      <FiCalendar className="text-white text-lg" />
+    </button>
+  )}
+</div>
+
+
+{/* Check Out */}
+<div className="p-3">
+  <p className="text-sm text-[#A9A9A9] ml-3">Check Out</p>
+
+  {!useDesktopPicker ? (
+    <input
+      type="date"
+      className="border-none bg-transparent text-white outline-none text-sm lg:text-base focus:ring-transparent"
+      required
+      min={
+        checkIn
+          ? checkIn.toISOString().split("T")[0]
+          : new Date().toISOString().split("T")[0]
+      }
+      onChange={(e) =>
+        setCheckOut(e.target.value ? new Date(e.target.value) : null)
+      }
+    />
+  ) : (
+    <button
+      type="button"
+      onClick={openOutOverlay}
+      className="w-full flex items-center justify-between
+                 border border-white/20 px-3 py-2 mt-[2px]
+                 text-white text-sm lg:text-base"
+    >
+      <span>
+        {checkOut ? formatDate(checkOut) : "Select date"}
+      </span>
+
+      <FiCalendar className="text-white text-lg" />
+    </button>
+  )}
+</div>
 
           {/* Rooms Dropdown */}
-          <div className="p-3 relative">
+          <div className="p-3 relative " ref={roomRef}>
             <div
               className="text-white px-3 py-2 cursor-pointer"
               onClick={() => setOpen(!open)}
@@ -567,13 +607,13 @@ const Rooms = () => {
                   <div>{room} Room</div>
                   <div className="flex gap-2">
                     <button
-                      className="w-5 h-5 bg-khaki text-white"
+                      className="w-6 h-6 bg-khaki text-white"
                       onClick={() => setRoom(room + 1)}
                     >
                       +
                     </button>
                     <button
-                      className="w-5 h-5 bg-khaki text-white"
+                      className="w-6 h-6 bg-khaki text-white"
                       onClick={() => setRoom((v) => Math.max(1, v - 1))}
                     >
                       -
@@ -585,7 +625,7 @@ const Rooms = () => {
           </div>
 
           {/* Guests Dropdown */}
-          <div className="p-3 relative">
+          <div className="p-3 relative " ref={guestRef}>
             <div
               className="text-white px-3 py-2 cursor-pointer"
               onClick={() => setGuestOpen(!guestOpen)}
@@ -603,13 +643,13 @@ const Rooms = () => {
                   <div>{adult} Adult</div>
                   <div className="flex gap-2">
                     <button
-                      className="w-5 h-5 bg-khaki text-white"
+                      className="w-6 h-6 bg-khaki text-white"
                       onClick={() => setAdult(adult + 1)}
                     >
                       +
                     </button>
                     <button
-                      className="w-5 h-5 bg-khaki text-white"
+                      className="w-6 h-6 bg-khaki text-white"
                       onClick={() => setAdult((v) => Math.max(1, v - 1))}
                     >
                       -
@@ -620,13 +660,13 @@ const Rooms = () => {
                   <div>{children} Child</div>
                   <div className="flex gap-2">
                     <button
-                      className="w-5 h-5 bg-khaki text-white"
+                      className="w-6 h-6 bg-khaki text-white"
                       onClick={() => setChildren(children + 1)}
                     >
                       +
                     </button>
                     <button
-                      className="w-5 h-5 bg-khaki text-white"
+                      className="w-6 h-6 bg-khaki text-white"
                       onClick={() => setChildren((v) => Math.max(0, v - 1))}
                     >
                       -
@@ -677,24 +717,23 @@ const Rooms = () => {
                 </button>
               </div>
               <div className="p-3 md:p-5">
-                <ReactDatePicker
-                  inline
-                  monthsShown={1}
-                  calendarClassName="rdp-pill"
-                  selected={showInOverlay ? checkIn : checkOut}
-                  minDate={showInOverlay ? new Date() : checkIn || new Date()}
-                  onChange={(date) => {
-                    if (showInOverlay) {
-                      setCheckIn(date);
-                      if (checkOut && date && checkOut < date) setCheckOut(null);
-                      closeOverlay();
-                    } else {
-                      setCheckOut(date);
-                      closeOverlay();
-                    }
-                  }}
-                  showDisabledMonthNavigation
-                  renderCustomHeader={({
+<ReactDatePicker
+  inline
+  monthsShown={1}
+  calendarClassName="rdp-pill"
+  selected={showInOverlay ? checkIn : checkOut}
+  minDate={showInOverlay ? new Date() : checkIn || new Date()} // same logic
+  onChange={(date) => {
+    if (showInOverlay) {
+      setCheckIn(date);
+      if (checkOut && date && checkOut < date) setCheckOut(null);
+      closeOverlay();
+    } else {
+      setCheckOut(date);
+      closeOverlay();
+    }
+  }}
+  showDisabledMonthNavigation                  renderCustomHeader={({
                     date,
                     changeMonth,
                     changeYear,
