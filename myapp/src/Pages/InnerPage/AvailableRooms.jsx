@@ -408,7 +408,6 @@ const AvailableRooms = () => {
   const [open, setOpen] = useState(false);
   const [guestOpen, setGuestOpen] = useState(false);
 
-  const [useDesktopPicker, setUseDesktopPicker] = useState(false);
   const [showInOverlay, setShowInOverlay] = useState(false);
   const [showOutOverlay, setShowOutOverlay] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
@@ -418,16 +417,7 @@ const AvailableRooms = () => {
   const roomRef = useRef(null);
   const guestRef = useRef(null);
 
-  // Detect desktop
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
-    const update = () => setUseDesktopPicker(mq.matches);
-    update();
-    mq.addEventListener?.("change", update);
-    return () => mq.removeEventListener?.("change", update);
-  }, []);
-
-  // Format date
+  // Format date to yyyy-mm-dd
   const formatDate = (date) => (date ? date.toISOString().split("T")[0] : "");
 
   // Overlay controls
@@ -470,7 +460,7 @@ const AvailableRooms = () => {
           setAvailableRooms([]);
         }
       } catch (error) {
-        console.error("Error fetching rooms:", error);
+        console.error("Error fetching available rooms:", error);
       }
     };
 
@@ -480,8 +470,12 @@ const AvailableRooms = () => {
   // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (roomRef.current && !roomRef.current.contains(event.target)) setOpen(false);
-      if (guestRef.current && !guestRef.current.contains(event.target)) setGuestOpen(false);
+      if (roomRef.current && !roomRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+      if (guestRef.current && !guestRef.current.contains(event.target)) {
+        setGuestOpen(false);
+      }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
@@ -492,69 +486,54 @@ const AvailableRooms = () => {
     <div className="bg-whiteSmoke dark:bg-white font-Inter">
       <BreadCrumb title="AVAILABLE ROOMS" home="/" />
 
-      {/* Filter Bar */}
+      {/* ===== FILTER BAR ===== */}
       <div
         className="Container-Hero bg-lightBlack dark:bg-normalBlack grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 
-                   items-center justify-center font-Arial py-3 lg:py-4 xl:py-5 border-t-[3px] border-t-khaki 
-                   mx-auto shadow-xl relative z-20 -mt-20 px-4 sm:px-6 lg:px-10"
+                   items-center font-Arial py-3 lg:py-4 xl:py-5 border-t-[3px] border-t-khaki mx-auto shadow-xl 
+                   relative z-20 -mt-20 px-4 sm:px-6 lg:px-10"
       >
         {/* Check In */}
         <div className="p-3">
           <p className="text-sm text-[#A9A9A9] ml-3">Check In</p>
 
-          {!useDesktopPicker ? (
-            <input
-              type="date"
-              className="border-none bg-transparent text-white outline-none text-sm lg:text-base focus:ring-transparent"
-              required
-              min={new Date().toISOString().split("T")[0]}
-              onChange={(e) => setCheckIn(e.target.value ? new Date(e.target.value) : null)}
-            />
-          ) : (
-            <button
-              type="button"
-              onClick={openInOverlay}
-              className="w-full text-white text-sm lg:text-base border border-white/20 
-                         px-3 py-2 mt-[2px] flex items-center justify-between"
-            >
-              <span>{checkIn ? formatDate(checkIn) : "dd-mm-yyyy"}</span>
-              <FiCalendar className="text-white opacity-80" size={18} />
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={openInOverlay}
+            className="w-full text-white text-sm lg:text-base border border-white/20 px-3 py-2 mt-[2px] 
+                       flex items-center justify-between"
+          >
+            <span>{checkIn ? formatDate(checkIn) : "dd-mm-yyyy"}</span>
+            <FiCalendar className="text-white opacity-80" size={18} />
+          </button>
         </div>
 
         {/* Check Out */}
         <div className="p-3">
           <p className="text-sm text-[#A9A9A9] ml-3">Check Out</p>
 
-          {!useDesktopPicker ? (
-            <input
-              type="date"
-              className="border-none bg-transparent text-white outline-none text-sm lg:text-base focus:ring-transparent"
-              required
-              min={checkIn ? checkIn.toISOString().split("T")[0] : new Date().toISOString().split("T")[0]}
-              onChange={(e) => setCheckOut(e.target.value ? new Date(e.target.value) : null)}
-            />
-          ) : (
-            <button
-              type="button"
-              onClick={openOutOverlay}
-              className="w-full text-white text-sm lg:text-base border border-white/20 
-                         px-3 py-2 mt-[2px] flex items-center justify-between"
-            >
-              <span>{checkOut ? formatDate(checkOut) : "dd-mm-yyyy"}</span>
-              <FiCalendar className="text-white opacity-80" size={18} />
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={openOutOverlay}
+            className="w-full text-white text-sm lg:text-base border border-white/20 px-3 py-2 mt-[2px] 
+                       flex items-center justify-between"
+          >
+            <span>{checkOut ? formatDate(checkOut) : "dd-mm-yyyy"}</span>
+            <FiCalendar className="text-white opacity-80" size={18} />
+          </button>
         </div>
 
-        {/* Rooms */}
+        {/* Rooms Dropdown */}
         <div className="p-3 relative" ref={roomRef}>
-          <div className="text-white px-3 py-2 cursor-pointer" onClick={() => setOpen(!open)}>
+          <div
+            className="text-white px-3 py-2 cursor-pointer"
+            onClick={() => setOpen(!open)}
+          >
             <span className="flex items-center justify-between text-sm text-[#A9A9A9]">
               Rooms <BiChevronDown />
             </span>
-            <div className="pt-[10px] text-sm sm:text-base">{roomCount} Room</div>
+            <div className="pt-[10px] text-sm sm:text-base">
+              {roomCount} Room
+            </div>
           </div>
 
           {open && (
@@ -562,17 +541,30 @@ const AvailableRooms = () => {
               <div className="px-5 py-2 flex justify-between items-center">
                 <div>{roomCount} Room</div>
                 <div className="flex gap-2">
-                  <button className="w-5 h-5 bg-khaki text-white" onClick={() => setRoomCount(roomCount + 1)}>+</button>
-                  <button className="w-5 h-5 bg-khaki text-white" onClick={() => setRoomCount((v) => Math.max(1, v - 1))}>-</button>
+                  <button
+                    className="w-5 h-5 bg-khaki text-white"
+                    onClick={() => setRoomCount(roomCount + 1)}
+                  >
+                    +
+                  </button>
+                  <button
+                    className="w-5 h-5 bg-khaki text-white"
+                    onClick={() => setRoomCount((v) => Math.max(1, v - 1))}
+                  >
+                    -
+                  </button>
                 </div>
               </div>
             </div>
           )}
         </div>
 
-        {/* Guests */}
+        {/* Guests Dropdown */}
         <div className="p-3 relative" ref={guestRef}>
-          <div className="text-white px-3 py-2 cursor-pointer" onClick={() => setGuestOpen(!guestOpen)}>
+          <div
+            className="text-white px-3 py-2 cursor-pointer"
+            onClick={() => setGuestOpen(!guestOpen)}
+          >
             <span className="flex items-center justify-between text-sm text-[#A9A9A9]">
               Guests <BiChevronDown />
             </span>
@@ -586,16 +578,36 @@ const AvailableRooms = () => {
               <div className="px-5 py-2 flex justify-between items-center">
                 <div>{adult} Adult</div>
                 <div className="flex gap-2">
-                  <button className="w-5 h-5 bg-khaki text-white" onClick={() => setAdult(adult + 1)}>+</button>
-                  <button className="w-5 h-5 bg-khaki text-white" onClick={() => setAdult((v) => Math.max(1, v - 1))}>-</button>
+                  <button
+                    className="w-5 h-5 bg-khaki text-white"
+                    onClick={() => setAdult(adult + 1)}
+                  >
+                    +
+                  </button>
+                  <button
+                    className="w-5 h-5 bg-khaki text-white"
+                    onClick={() => setAdult((v) => Math.max(1, v - 1))}
+                  >
+                    -
+                  </button>
                 </div>
               </div>
 
               <div className="px-5 py-2 flex justify-between items-center">
                 <div>{children} Child</div>
                 <div className="flex gap-2">
-                  <button className="w-5 h-5 bg-khaki text-white" onClick={() => setChildren(children + 1)}>+</button>
-                  <button className="w-5 h-5 bg-khaki text-white" onClick={() => setChildren((v) => Math.max(0, v - 1))}>-</button>
+                  <button
+                    className="w-5 h-5 bg-khaki text-white"
+                    onClick={() => setChildren(children + 1)}
+                  >
+                    +
+                  </button>
+                  <button
+                    className="w-5 h-5 bg-khaki text-white"
+                    onClick={() => setChildren((v) => Math.max(0, v - 1))}
+                  >
+                    -
+                  </button>
                 </div>
               </div>
             </div>
@@ -615,8 +627,8 @@ const AvailableRooms = () => {
         </button>
       </div>
 
-      {/* Desktop overlay calendar */}
-      {useDesktopPicker && (showInOverlay || showOutOverlay) && (
+      {/* ===== DATE OVERLAY ===== */}
+      {(showInOverlay || showOutOverlay) && (
         <div
           className="fixed inset-0 z-[9999] bg-black/20 flex items-center justify-center px-4"
           onClick={closeOverlay}
@@ -657,11 +669,11 @@ const AvailableRooms = () => {
                 showDisabledMonthNavigation
               />
             </div>
-          </div>
+          </div>    
         </div>
       )}
 
-      {/* Rooms List */}
+      {/* ===== AVAILABLE ROOMS LIST ===== */}
       <div
         className="bg-cover bg-center bg-no-repeat py-20 2xl:py-[120px]"
         style={{ backgroundImage: "url('/images/home/background.png')" }}
@@ -687,6 +699,7 @@ const AvailableRooms = () => {
                       className="w-full h-full object-cover transition-all duration-700 
                                  group-hover:scale-110 group-hover:opacity-80"
                     />
+
                     <div className="px-5 py-2 inline-flex bg-khaki text-sm text-white absolute top-[10px] right-[10px] z-10">
                       Nu {r.price.toLocaleString()}
                     </div>
@@ -703,8 +716,9 @@ const AvailableRooms = () => {
                       }}
                     >
                       <button className="view-details-btn flex items-center justify-center text-[15px] 
-                                         leading-[38px] bg-black bg-opacity-90 hover:bg-opacity-100 absolute bottom-0 
-                                         -left-40 px-6 py-1 text-white group-hover:left-0 transition-all duration-500 z-10">
+                                         leading-[38px] bg-black bg-opacity-90 hover:bg-opacity-100 
+                                         absolute bottom-0 -left-40 px-6 py-1 text-white group-hover:left-0 
+                                         transition-all duration-500 z-10">
                         View Details <BsArrowRight className="w-4 h-4 ml-2 text-white" />
                       </button>
                     </Link>
@@ -712,8 +726,12 @@ const AvailableRooms = () => {
 
                   <div className="font-inter border-t border-gray-200">
                     <div className="py-6 px-5 sm:px-6 md:px-8 lg:px-[30px]">
-                      <h4 className="text-sm text-khaki uppercase font-semibold">{r.location}</h4>
-                      <h2 className="text-2xl font-semibold text-black py-4 hover:text-khaki transition">{r.roomType}</h2>
+                      <h4 className="text-sm text-khaki uppercase font-semibold">
+                        {r.location}
+                      </h4>
+                      <h2 className="text-2xl font-semibold text-black py-4 hover:text-khaki transition">
+                        {r.roomType}
+                      </h2>
                       <p className="text-sm text-gray-800">
                         {r.size} SQ.FT | {r.occupancy} Guests
                       </p>
