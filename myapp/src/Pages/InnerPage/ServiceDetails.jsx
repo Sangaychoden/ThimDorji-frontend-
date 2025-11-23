@@ -44,9 +44,10 @@ const ServiceDetails = () => {
 
   return (
     <section className="bg-white text-gray-700 font-['Inter']">
-      <BreadCrumb title="Facility Details" />
+      <BreadCrumb title="Services Details" />
 
-      <div className="py-20 2xl:py-[120px] bg-white">
+<div className="py-10 md:py-0 md:pb-[120px] lg:py-[80px] bg-white">
+
         <div className="Container">
           {/* ✅ Image Slider */}
           <div className="grid items-center grid-cols-6 md:grid-cols-7 lg:grid-cols-6 gap-5">
@@ -92,7 +93,7 @@ const ServiceDetails = () => {
           </div>
 
           {/* ✅ Facility Description */}
-          <div className="pt-10 lg:pt-[45px] pr-3">
+          <div className="pt-5 lg:pt-[45px] pr-3">
             <h2 className="py-3 font-semibold text-[26px] sm:text-3xl lg:text-4xl text-black">
               {facility.title}
             </h2>

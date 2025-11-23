@@ -175,7 +175,14 @@ const RoomDetails2 = () => {
   --------------------------*/
   const checkRoomAvailability = async () => {
     if (!checkIn || !checkOut) {
-      Swal.fire("Please select check-in & check-out dates", "", "warning");
+Swal.fire({
+  icon: "warning",
+  title: "Please select check-in & check-out dates",
+  text: "",
+  background: "#006600",
+  color: "#fff",
+  confirmButtonColor: "#008000",
+});
       return;
     }
 
@@ -223,7 +230,14 @@ const RoomDetails2 = () => {
       });
     } catch (err) {
       console.error(err);
-      Swal.fire("Server error", "", "error");
+Swal.fire({
+  icon: "error",
+  title: "Server error",
+  text: "",
+  background: "#006600",
+  color: "#fff",
+  confirmButtonColor: "#008000",
+});
     }
   };
 
@@ -254,7 +268,7 @@ const RoomDetails2 = () => {
       <BreadCrumb title="room details" />
 
       {/* IMAGE + DETAILS SECTION */}
-      <div className="py-20 2xl:py-[120px] dark:bg-lightBlack">
+      <div className="py-10 md:py-0 pb-0 md:pb-[120px] lg:py-[80px] dark:bg-lightBlack">
         <div className="Container grid grid-cols-6 md:grid-cols-7 lg:grid-cols-6 gap-5">
           
           {/* LEFT SECTION */}
@@ -285,7 +299,7 @@ const RoomDetails2 = () => {
 
             {/* Room Details */}
             <div className="pt-5 lg:pt-[35px] pr-3">
-              <h2 className="text-2xl lg:text-4xl font-semibold text-lightBlack dark:text-white">
+              <h2 className="text-2xl lg:text-4xl mb-4 font-semibold text-lightBlack dark:text-white">
                 {roomData.roomType}
               </h2>
 
