@@ -14,7 +14,7 @@ const About = () => {
 
       {/* about content */}
       <section className="bg-white dark:bg-white">
-        <div className="Container py-20 2xl:py-[120px] sm:overflow-hidden lg:overflow-auto">
+<div className="Container py-10 sm:py-20 2xl:py-[120px] sm:overflow-hidden lg:overflow-auto">
           <div className="flex flex-col md:flex-row items-center justify-between">
             {/* image */}
             <div

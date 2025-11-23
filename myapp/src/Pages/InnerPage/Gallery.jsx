@@ -136,7 +136,7 @@ const Team = () => {
           </div>
 
           {/* Mobile Layout */}
-          <div className="flex flex-col space-y-5 md:hidden mt-[60px]">
+          <div className="flex flex-col space-y-5 md:hidden mt-[15px] mb-[-35px]">
             {galleryImages.map((img, idx) => (
               <ImageItem key={idx} img={img} idx={idx} />
             ))}

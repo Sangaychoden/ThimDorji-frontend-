@@ -92,7 +92,7 @@ const Contact = () => {
     <div>
       <BreadCrumb title="Contact" />
 
-      <div className="py-20 2xl:py-[120px] dark:bg-lightBlack">
+<div className="py-0 md:py-20 2xl:py-[120px] dark:bg-lightBlack">
         <div className="Container bg-[#F5F5F5] dark:bg-normalBlack px-7 md:px-10 lg:px-14 2xl:px-20 py-10 md:py-14 lg:py-18 xl:py-20 2xl:py-[100px] ">
           <div className="flex items-center flex-col md:flex-row">
 
@@ -116,9 +116,12 @@ const Contact = () => {
                 </div>
                 <div className="ml-3 md:ml-4">
                   <p className="font-Arial text-sm text-[#808080] dark:text-lightGray">Call Us Now</p>
-                  <p className="font-Arial text-lg text-black dark:text-lightGray">
-                    ‪+975 17755898‬ | ‪+65 8111 9926‬
-                  </p>
+<p
+  className="font-Arial text-lg text-black dark:text-lightGray decoration-transparent"
+>
+  ‪+975 17755898‬ | ‪+65 8111 9926‬
+</p>
+
                 </div>
               </div>
 
@@ -133,9 +136,12 @@ const Contact = () => {
                 </div>
                 <div className="ml-3 md:ml-4">
                   <p className="font-Arial text-sm text-[#808080] dark:text-lightGray">Send Email</p>
-                  <p className="font-Arial text-lg text-black dark:text-lightGray">
-                    resortthimdorjireservation@gmail.com
-                  </p>
+<p
+  className="font-Arial text-lg text-black dark:text-lightGray decoration-transparent"
+>
+  resortthimdorjireservation@gmail.com
+</p>
+
                 </div>
               </div>
 
