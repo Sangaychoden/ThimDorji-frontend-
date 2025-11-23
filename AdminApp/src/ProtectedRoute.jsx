@@ -11,7 +11,7 @@ export default function ProtectedRoute({ children }) {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await fetch(`${API_URL}/admin/check-auth`, {
+        const res = await fetch(`${API_URL}/check-auth`, {
           method: "GET",
           credentials: "include",
         });
