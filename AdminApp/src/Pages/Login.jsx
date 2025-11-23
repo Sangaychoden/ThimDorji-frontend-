@@ -771,50 +771,99 @@ const Login = () => {
     setErrors(newErrors);
   };
 
-  // LOGIN HANDLER
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validateForm()) return;
+  // // LOGIN HANDLER
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   if (!validateForm()) return;
 
-    try {
-      setLoading(true);
+  //   try {
+  //     setLoading(true);
 
-      const response = await fetch(`${API_URL}/admin/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({
-          username,
-          password,
-        }),
-      });
+  //     const response = await fetch(`${API_URL}/admin/login`, {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       credentials: "include",
+  //       body: JSON.stringify({
+  //         username,
+  //         password,
+  //       }),
+  //     });
 
-      const data = await response.json();
+  //     const data = await response.json();
 
-      if (response.ok) {
-        alert(data.message);
+  //     if (response.ok) {
+  //       alert(data.message);
 
-        localStorage.setItem("adminUsername", username);
+  //       localStorage.setItem("adminUsername", username);
 
-        if (data.email) {
-          localStorage.setItem("adminEmail", data.email);
-        } else {
-          localStorage.setItem("adminEmail", `${username}@example.com`);
-        }
+  //       if (data.email) {
+  //         localStorage.setItem("adminEmail", data.email);
+  //       } else {
+  //         localStorage.setItem("adminEmail", `${username}@example.com`);
+  //       }
 
-        setUsername("");
-        setPassword("");
-        navigate("/dashboard");
+  //       setUsername("");
+  //       setPassword("");
+  //       navigate("/dashboard");
+  //     } else {
+  //       setErrors({ general: data.message || "Login failed" });
+  //     }
+  //   } catch (err) {
+  //     console.error("Login error:", err);
+  //     setErrors({ general: "Server error. Please try again later." });
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+// LOGIN HANDLER
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!validateForm()) return;
+
+  try {
+    setLoading(true);
+
+    const response = await fetch(`${API_URL}/admin/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert(data.message);
+
+      localStorage.setItem("adminUsername", username);
+
+      if (data.email) {
+        localStorage.setItem("adminEmail", data.email);
       } else {
-        setErrors({ general: data.message || "Login failed" });
+        localStorage.setItem("adminEmail", `${username}@example.com`);
       }
-    } catch (err) {
-      console.error("Login error:", err);
-      setErrors({ general: "Server error. Please try again later." });
-    } finally {
-      setLoading(false);
+
+      setUsername("");
+      setPassword("");
+
+      // ⭐ IMPORTANT FIX → allow cookie to save before ProtectedRoute checks
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 300);
+
+    } else {
+      setErrors({ general: data.message || "Login failed" });
     }
-  };
+  } catch (err) {
+    console.error("Login error:", err);
+    setErrors({ general: "Server error. Please try again later." });
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div style={pageStyle}>
