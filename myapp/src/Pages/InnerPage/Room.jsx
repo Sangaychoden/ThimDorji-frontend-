@@ -346,7 +346,7 @@ const Room = () => {
             <div className="flex items-center justify-center space-x-2">
 <hr className="w-[150px] h-[1px] text-[#8C8C8C]" />            </div>
             <h1 className="text-[22px] sm:text-2xl md:text-3xl 2xl:text-[38px] leading-7 sm:leading-8 md:leading-9 lg:leading-[42px] 2xl:leading-[52px] text-black mt-[30px] mb-[24px] font-inter font-semibold uppercase">
-              Rooms & Suites
+              Rooms
             </h1>
           </div>
 
