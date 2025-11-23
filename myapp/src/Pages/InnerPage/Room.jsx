@@ -331,7 +331,7 @@ const Room = () => {
 
   return (
     <section className="font-inter">
-      <BreadCrumb title="ROOMS" home={"/"} />
+      <BreadCrumb title="ROOM" home={"/"} />
 
       <div
         className="bg-cover bg-center bg-no-repeat py-10 md:py-0 pb-[40px] md:pb-[120px] lg:py-[80px]"
