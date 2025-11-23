@@ -523,72 +523,51 @@ const guestRef = useRef(null);
           data-aos="fade-down"
           data-aos-duration="1000"
         >
-{/* Check In */}
-<div className="p-3">
-  <p className="text-sm text-[#A9A9A9] ml-3">Check In</p>
+          {/* Check In */}
+          <div className="p-3">
+            <p className="text-sm text-[#A9A9A9] ml-3">Check In</p>
+            {!useDesktopPicker ? (
+              <input
+                type="date"
+                className="border-none bg-transparent text-white outline-none text-sm lg:text-base focus:ring-transparent"
+                required
+                onChange={(e) =>
+                  setCheckIn(e.target.value ? new Date(e.target.value) : null)
+                }
+              />
+            ) : (
+              <button
+                type="button"
+                onClick={openInOverlay}
+                className="w-full text-left text-white text-sm lg:text-base border border-white/20 px-3 py-2 mt-[2px]"
+              >
+                {checkIn ? formatDate(checkIn) : "Select date"}
+              </button>
+            )}
+          </div>
 
-  {!useDesktopPicker ? (
-    <input
-      type="date"
-      className="border-none bg-transparent text-white outline-none text-sm lg:text-base focus:ring-transparent"
-      required
-      min={new Date().toISOString().split("T")[0]}
-      onChange={(e) =>
-        setCheckIn(e.target.value ? new Date(e.target.value) : null)
-      }
-    />
-  ) : (
-    <button
-      type="button"
-      onClick={openInOverlay}
-      className="w-full flex items-center justify-between
-                 border border-white/20 px-3 py-2 mt-[2px]
-                 text-white text-sm lg:text-base"
-    >
-      <span>
-        {checkIn ? formatDate(checkIn) : "Select date"}
-      </span>
-
-      <FiCalendar className="text-white text-lg" />
-    </button>
-  )}
-</div>
-
-
-{/* Check Out */}
-<div className="p-3">
-  <p className="text-sm text-[#A9A9A9] ml-3">Check Out</p>
-
-  {!useDesktopPicker ? (
-    <input
-      type="date"
-      className="border-none bg-transparent text-white outline-none text-sm lg:text-base focus:ring-transparent"
-      required
-      min={
-        checkIn
-          ? checkIn.toISOString().split("T")[0]
-          : new Date().toISOString().split("T")[0]
-      }
-      onChange={(e) =>
-        setCheckOut(e.target.value ? new Date(e.target.value) : null)
-      }
-    />
-  ) : (
-    <button
-      type="button"
-      onClick={openOutOverlay}
-      className="w-full flex items-center justify-between
-                 border border-white/20 px-3 py-2 mt-[2px]
-                 text-white text-sm lg:text-base"
-    >
-      <span>
-        {checkOut ? formatDate(checkOut) : "Select date"}
-      </span>
-
-      <FiCalendar className="text-white text-lg" />
-    </button>
-  )}
-</div>
+          {/* Check Out */}
+          <div className="p-3">
+            <p className="text-sm text-[#A9A9A9] ml-3">Check Out</p>
+            {!useDesktopPicker ? (
+              <input
+                type="date"
+                className="border-none bg-transparent text-white outline-none text-sm lg:text-base focus:ring-transparent"
+                required
+                onChange={(e) =>
+                  setCheckOut(e.target.value ? new Date(e.target.value) : null)
+                }
+              />
+            ) : (
+              <button
+                type="button"
+                onClick={openOutOverlay}
+                className="w-full text-left text-white text-sm lg:text-base border border-white/20 px-3 py-2 mt-[2px]"
+              >
+                {checkOut ? formatDate(checkOut) : "Select date"}
+              </button>
+            )}
+          </div>
 
           {/* Rooms Dropdown */}
           <div className="p-3 relative " ref={roomRef}>
