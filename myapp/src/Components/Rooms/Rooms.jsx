@@ -535,7 +535,12 @@ const Rooms = () => {
               onClick={openInOverlay}
               className="w-full text-left text-white text-sm lg:text-base border border-white/20 px-3 py-2 mt-[2px]"
             >
-              {checkIn ? formatDate(checkIn) : "dd-mm-yyyy"}
+              <span className="flex items-center justify-between w-full">
+              <span>{checkIn ? formatDate(checkIn) : "dd-mm-yyyy"}</span>
+              <FiCalendar className="text-white opacity-80 ml-2" size={18} />
+            </span>
+
+              {/* {checkIn ? formatDate(checkIn) : "dd-mm-yyyy"} */}
             </button>
           </div>
 
@@ -548,7 +553,12 @@ const Rooms = () => {
               onClick={openOutOverlay}
               className="w-full text-left text-white text-sm lg:text-base border border-white/20 px-3 py-2 mt-[2px]"
             >
-              {checkOut ? formatDate(checkOut) : "dd-mm-yyyy"}
+              <span className="flex items-center justify-between w-full">
+              <span>{checkIn ? formatDate(checkIn) : "dd-mm-yyyy"}</span>
+              <FiCalendar className="text-white opacity-80 ml-2" size={18} />
+            </span>
+
+              {/* {checkOut ? formatDate(checkOut) : "dd-mm-yyyy"} */}
             </button>
           </div>
 
