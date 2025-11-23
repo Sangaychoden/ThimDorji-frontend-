@@ -566,7 +566,7 @@ const Testimonial = () => {
 
   return (
     <section className="bg-[url('/images/home/background.png')] bg-[rgba(30,30,30,0.4)] dark:bg-[rgba(30,30,30,0.6)] bg-opacity-40 grid items-center justify-center bg-no-repeat bg-cover">
-      <div className="Container py-10 md:py-0 pb-[40px] md:pb-[120px] lg:py-[80px]">
+      <div className="Container  md:py-0 pb-[40px] md:pb-[120px] lg:py-[80px]">
         {/* Section Header */}
         <div
           className="text-center px-5 sm:px-10 md:px-[80px] lg:px-[120px] xl:px-[200px] 2xl:px-[335px]"
