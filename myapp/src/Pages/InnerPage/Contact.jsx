@@ -108,22 +108,27 @@ const Contact = () => {
               </p>
 
               {/* PHONE */}
-              <div className="flex items-center my-4 md:my-5 lg:my-[26px] group">
-                <div className="w-[30px] h-[30px] md:w-[40px] md:h-[40px] lg:w-[50px] lg:h-[50px] 2xl:w-[60px] 2xl:h-[60px]
-                dark:bg-lightBlack bg-[#F5F5F5] 
-                grid items-center justify-center -full transition-all duration-300">
-                  <IoIosCall size={22} className="text-[#006600] group-hover:text-whiteSmoke" />
-                </div>
-                <div className="ml-3 md:ml-4">
-                  <p className="font-Arial text-sm text-[#808080] dark:text-[#E3E3E3]">Call Us Now</p>
-<p
-  className="font-Arial text-lg text-black dark:text-white decoration-transparent"
->
-  ‪+975 17755898‬ | ‪+65 8111 9926‬
-</p>
-
-                </div>
-              </div>
+<div className="flex items-center my-4 md:my-5 lg:my-[26px] group">
+  <div
+    className="w-[30px] h-[30px] md:w-[40px] md:h-[40px] lg:w-[50px] lg:h-[50px] 2xl:w-[60px] 2xl:h-[60px]
+    dark:bg-lightBlack bg-[#F5F5F5] 
+    grid items-center justify-center -full transition-all duration-300"
+  >
+    <IoIosCall size={22} className="text-[#006600] group-hover:text-whiteSmoke" />
+  </div>
+  <div className="ml-3 md:ml-4">
+    <p className="font-Arial text-sm text-[#808080] dark:text-[#E3E3E3]">Call Us Now</p>
+    <p className="font-Arial text-lg text-black dark:text-white decoration-transparent">
+      <a href="tel:+97517755898" className="hover:underline mr-2">
+        +975 17755898
+      </a>
+      |
+      <a href="tel:+6581119926" className="hover:underline ml-2">
+        +65 8111 9926
+      </a>
+    </p>
+  </div>
+</div>
 
               <hr className="dark:text-[#D3D3D3] bg-[#D3D3D3] h-[0.5px]" />
 
@@ -154,21 +159,27 @@ const Contact = () => {
 
               <hr className="dark:text-[#D3D3D3] bg-[#D3D3D3] h-[0.5px]" />
 
-              {/* LOCATION */}
-              <div className="flex items-center my-4 md:my-5 lg:my-[26px] group">
-                <div className="w-[30px] h-[30px] md:w-[40px] md:h-[40px] lg:w-[50px] lg:h-[50px] 2xl:w-[60px] 2xl:h-[60px]
-                bg-[#F5F5F5] dark:bg-lightBlack 
-                grid items-center justify-center -full transition-all duration-300">
-                  <MdOutlineShareLocation size={22} className="text-[#006600] group-hover:text-whiteSmoke" />
-                </div>
-                <div className="ml-3 md:ml-4">
-                  <p className="font-Arial text-sm text-[#808080] dark:text-[#E3E3E3]">Our Location</p>
-                  <p className="font-Arial text-lg text-black dark:text-white">
-                    Remphakha / Lower Tsendona,<br />
-                    Sangachokor Road, Paro 12002, Bhutan
-                  </p>
-                </div>
-              </div>
+{/* LOCATION */}
+<div
+  className="flex items-center my-4 md:my-5 lg:my-[26px] group cursor-pointer"
+  onClick={() => window.open("https://maps.app.goo.gl/v3X3SMMngvESTZAi8", "_blank")}
+>
+  <div
+    className="w-[30px] h-[30px] md:w-[40px] md:h-[40px] lg:w-[50px] lg:h-[50px] 2xl:w-[60px] 2xl:h-[60px]
+    bg-[#F5F5F5] dark:bg-lightBlack 
+    grid items-center justify-center -full transition-all duration-300"
+  >
+    <MdOutlineShareLocation size={22} className="text-[#006600] group-hover:text-whiteSmoke" />
+  </div>
+  <div className="ml-3 md:ml-4">
+    <p className="font-Arial text-sm text-[#808080] dark:text-[#E3E3E3]">Our Location</p>
+    <p className="font-Arial text-lg text-black dark:text-white">
+      Remphakha / Lower Tsendona,<br />
+      Sangachokor Road, Paro 12002, Bhutan
+    </p>
+  </div>
+</div>
+
 
             </div>
 
