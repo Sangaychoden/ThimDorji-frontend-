@@ -72,7 +72,9 @@ const AdminTestimonials = () => {
       background: "#006600",            }).then(() => {
     });
 
-    if (!result.isConfirmed) return;
+    // if (!result.isConfirmed) return;
+    // 🛠 FIX: prevent undefined crash
+    if (!result || !result.isConfirmed) return;
 
     try {
       const endpoint = isArchived
@@ -126,7 +128,9 @@ const AdminTestimonials = () => {
       background: "#006600",            }).then(() => {
     });
 
-    if (!result.isConfirmed) return;
+    // if (!result.isConfirmed) return;
+    // 🛠 FIX: prevent undefined crash
+if (!result || !result.isConfirmed) return;
 
     try {
       const endpoint = `${API_BASE}/testimonials/${id}`;
