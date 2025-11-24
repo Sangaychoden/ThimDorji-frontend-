@@ -857,7 +857,7 @@ const RoomDetails2 = () => {
                 {roomData.roomType}
               </h2>
 
-              <p className="text-sm text-[#808080] dark:text-lightGray">
+              <p className="text-sm text-[#808080] dark:text-[#D9D9D9]">
                 {roomData.roomDetails}
               </p>
 
@@ -866,10 +866,10 @@ const RoomDetails2 = () => {
                 <h2 className="pb-3 text-2xl font-semibold dark:text-white">
                   Room Features
                 </h2>
-                <ul className="space-y-2">
+                <ul className="space-y-2 dark:text-[#D9D9D9]">
                   {roomData.roomFeatures?.split(",").map((f, i) => (
                     <li key={i} className="flex items-center">
-                      <BsCheck2 className="text-[#006600] mr-2" /> {f.trim()}
+                      <BsCheck2 className="text-[#006600] dark:text-[#B3B3B3] mr-2" /> {f.trim()}
                     </li>
                   ))}
                 </ul>
@@ -880,10 +880,10 @@ const RoomDetails2 = () => {
                 <h2 className="pb-3 text-2xl font-semibold dark:text-white">
                   Bathroom Amenities
                 </h2>
-                <ul className="space-y-2">
+                <ul className="space-y-2 dark:text-[#D9D9D9]">
                   {roomData.bathroomAmenities?.split(",").map((b, i) => (
                     <li key={i} className="flex items-center">
-                      <BsCheck2 className="text-[#006600] mr-2" /> {b.trim()}
+                      <BsCheck2 className="text-[#006600] dark:text-[#B3B3B3] mr-2" /> {b.trim()}
                     </li>
                   ))}
                 </ul>
@@ -899,31 +899,27 @@ const RoomDetails2 = () => {
                 Room Details
               </h4>
 
-              <div className="space-y-5">
+              <div className="space-y-5 dark:text-[#D9D9D9]">
                 <div className="flex items-center border-b pb-4">
-                  <FaDollarSign className="text-[#006600] mr-3" />
+                  <FaDollarSign className="text-[#006600] dark:text-[#B3B3B3] mr-3" />
                   Nu {roomData.price} (USD {priceUSD}++)
                 </div>
 
                 <div className="flex items-center border-b pb-4">
-                  <FaVectorSquare className="text-[#006600] mr-3" />
+                  <FaVectorSquare className="text-[#006600] dark:text-[#B3B3B3] mr-3" />
                   {roomData.size} m²
                 </div>
 
                 <div className="flex items-center border-b pb-4">
-                  <FaUserFriends className="text-[#006600] mr-3" />
+                  <FaUserFriends className="text-[#006600] dark:text-[#B3B3B3] mr-3" />
                   {roomData.occupancy} max
                 </div>
 
                 <div className="flex items-center border-b pb-4">
-                  <FaBed className="text-[#006600] mr-3" />
+                  <FaBed className="text-[#006600] dark:text-[#B3B3B3] mr-3" />
                   {roomData.beds} Beds
                 </div>
 
-                <div className="flex items-center border-b pb-4">
-                  <FaWater className="text-[#006600] mr-3" />
-                  {roomData.location}
-                </div>
               </div>
 
               <div className="py-5">

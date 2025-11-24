@@ -13,7 +13,7 @@ const About = () => {
       <BreadCrumb title="About" home={""} />
 
       {/* about content */}
-      <section className="bg-white dark:bg-white">
+      <section className="bg-white dark:bg-black">
 <div className="Container py-10 sm:py-20 2xl:py-[120px] sm:overflow-hidden lg:overflow-auto">
           <div className="flex flex-col md:flex-row items-center justify-between">
             {/* image */}
@@ -35,23 +35,23 @@ const About = () => {
               data-aos="zoom-in-down"
               data-aos-duration="1000"
             >
-              <h5 className="text-base font-medium text-black dark:text-black font-Arial">
+              <h5 className="text-base font-medium text-black dark:text-[#E3E3E3] font-Arial">
                 LUXURY HOTEL AND RESORT
               </h5>
 
-              <h1 className="text-[22px] sm:text-2xl md:text-[21px] xl:text-3xl 2xl:text-[38px] font-semibold my-4 text-black dark:text-black font-Arial">
+              <h1 className="text-[22px] sm:text-2xl md:text-[21px] xl:text-3xl 2xl:text-[38px] font-semibold my-4 text-black dark:text-white font-Arial">
                 PARO, BHUTAN
               </h1>
 
-              <p className="text-sm xl:text-base md:text-sm lg:text-base font-normal leading-[20px] text-[#333] dark:text-black font-Arial">
+              <p className="text-sm xl:text-base md:text-sm lg:text-base font-normal leading-[20px] text-[#333] dark:text-white font-Arial">
                At Thim Dorji Resort, we pride ourselves on offering a unique hospitality experience that blends comfort, warmth, and the charm of Paro. Each of our guestrooms opens up to stunning views of the Paro River, allowing guests to relax and unwind while being surrounded by nature’s serenity.         
               </p>
 
-              <p className="text-sm xl:text-base md:text-sm lg:text-base font-normal leading-[20px] text-[#333] dark:text-black font-Arial">
+              <p className="text-sm xl:text-base md:text-sm lg:text-base font-normal leading-[20px] text-[#333] dark:text-white font-Arial">
                 Our team is dedicated to creating memorable stays, providing personalized service that reflects the local culture and traditions. Whether you’re here for a peaceful getaway or a memorable adventure, we ensure your stay is comfortable, authentic, and truly unforgettable.
               </p>
 
-              <div className="bg-[#F5F5F5] dark:bg-white px-[20px] py-3">
+              <div className="bg-[#F5F5F5] dark:bg-[#F5F5F5] dark:bg-white px-[20px] py-3">
                 <p className="text-sm sm:text-base  3xl:leading-[50px] font-medium font-Arial text-black dark:text-black">
                   Remphakha / Lower Tsendona, Sangachokor Road.
                 </p>
@@ -105,36 +105,36 @@ const About = () => {
 
 
             <div
-              className="bg-[#f8f6f3] dark:bg-normalBlack space-y-5 flex-1 px-5 sm:px-7 md:px-9 lg:pl-[70px] py-10 md:py-[96px] lg:pr-[70px] font-Arial"
+              className="bg-[#f8f6f3] dark:bg-black space-y-5 flex-1 px-5 sm:px-7 md:px-9 lg:pl-[70px] py-10 md:py-[96px] lg:pr-[70px] font-Arial"
               data-aos="zoom-in-up"
               data-aos-duration="1000"
             >
-              <h5 className="text-base font-medium text-black dark:text-black font-Arial">
-                MANAGER
+              <h5 className="text-base font-medium text-black dark:text-[#E3E3E3] font-Arial">
+                GENERAL MANAGER
               </h5>
-              <h1 className="text-[22px] sm:text-2xl md:text-[21px] xl:text-3xl 2xl:text-[38px] font-semibold my-4 text-black dark:text-black font-Arial">
+              <h1 className="text-[22px] sm:text-2xl md:text-[21px] xl:text-3xl 2xl:text-[38px] font-semibold my-4 text-black dark:text-white font-Arial">
                 LUXURY BEST HOTEL IN TOWN 
               </h1>
-              <p className="text-sm xl:text-base md:text-sm lg:text-base font-normal leading-[20px] text-[#333] dark:text-black font-Arial">
+              <p className="text-sm xl:text-base md:text-sm lg:text-base font-normal leading-[20px] text-[#333] dark:text-white font-Arial">
                 Welcome! Our team is committed to making your stay comfortable and memorable with warm hospitality and personalized service.
               </p>
-              <p className="text-sm xl:text-base md:text-sm italic lg:text-base font-normal leading-[20px] text-[#333] dark:text-black font-Arial">
+              <p className="text-sm xl:text-base md:text-sm italic lg:text-base font-normal leading-[20px] text-[#333] dark:text-white font-Arial">
              “Where you experience a unique hospitality culture
 and a Paro River view from the guestrooms”
               </p>
               <div className="flex items-center space-x-6 pt-5">
                 <img
-                  src="/images/home/about/pema.png"
+                  src="/images/home/manager.png"
                   className="w-[65px] h-[65px] object-cover"
                   alt=""
                 />
                 <div className="">
                   <h4 className="text-lg sm:text-[18px] leading-[26px] text-lightBlack dark:text-white font-semibold font-Arial">
-                  Pema Wangchuck
+                  Rinzin Dorji
                   </h4>
-                  <p className="text-base sm:text-[15px] leading-[26px] font-normal text-[#333] dark:text-lightGray flex items-center font-Arial">
-                    <span className="w-5 h-[1px] inline-block text-[#333] bg-khaki mr-2"></span>
-                    Manger
+                  <p className="text-base sm:text-[15px] leading-[26px] font-normal text-[#333] dark:text-[#D3D3D3] flex items-center font-Arial">
+                    <span className="w-5 h-[1px] inline-block text-[#333] bg-khaki dark:bg-[#B3B3B3] mr-2"></span>
+                    G.Manger
                   </p>
                 </div>
               </div>
