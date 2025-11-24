@@ -1,13 +1,37 @@
+// src/Components/ProtectedRoute.jsx
 import { Navigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-const ProtectedRoute = ({ children }) => {
-  const hasToken = document.cookie.includes("adminToken=");
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
-  if (!hasToken) {
-    return <Navigate to="/login" replace />;
-  }
+export default function ProtectedRoute({ children }) {
+  const [loading, setLoading] = useState(true);
+  const [authenticated, setAuthenticated] = useState(false);
 
-  return children;
-};
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const res = await fetch(`${API_URL}/check-auth`, {
+          method: "GET",
+          credentials: "include",
+        });
 
-export default ProtectedRoute;
+        if (res.ok) {
+          setAuthenticated(true);
+        } else {
+          setAuthenticated(false);
+        }
+      } catch (err) {
+        setAuthenticated(false);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkAuth();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+
+  return authenticated ? children : <Navigate to="/login" replace />;
+}

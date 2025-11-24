@@ -102,31 +102,34 @@
 // src/AppRouter.jsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+// Public pages
 import Login from "./Pages/Login";
 import ForgotPassword from "./Pages/ForgotPassword";
+
+// Admin pages
 import Dashboard from "./Pages/Dashboard";
 import Booking from "./Pages/Booking";
 import BookingDetails from "./Pages/BookingDetails";
 import Receptionists from "./Pages/Receptionist";
 import ReceptionistDetails from "./Pages/ReceptionistDetails";
 
-import AdminRooms from "./Pages/AdminRooms";
-import AddRoom from "./Pages/AddRoom";
-import RoomDisplay from "./Pages/RoomDisplay";
-import EditRoom from "./Pages/EditRoom";
+import AdminRooms from "./Pages/AdminRooms.jsx";
+import AddRoom from "./Pages/AddRoom.jsx";
+import RoomDisplay from "./Pages/RoomDisplay.jsx";
+import EditRoom from "./Pages/EditRoom.jsx";
 
-import AdminProfile from "./Pages/AdminProfile";
+import AdminProfile from "./Pages/AdminProfile.jsx";
 
-import AdminFacilities from "./Pages/AdminFacilities";
-import AddFacility from "./Pages/AddFacility";
-import EditFacility from "./Pages/EditFacility";
+import AdminFacilities from "./Pages/AdminFacilities.jsx";
+import AddFacility from "./Pages/AddFacility.jsx";
+import EditFacility from "./Pages/EditFacility.jsx";
 
-import AdminTestimonials from "./Pages/AdminTestimonials";
-import AddTestimonial from "./Pages/AddTestimonial";
-import EditTestimonial from "./Pages/EditTestimonial";
+import AdminTestimonials from "./Pages/AdminTestimonials.jsx";
+import AddTestimonial from "./Pages/AddTestimonial.jsx";
+import EditTestimonial from "./Pages/EditTestimonial.jsx";
 
 import AdminLayout from "./Components/AdminLayout";
-import ProtectedRoute from "./ProtectedRoute";   // 🔥 ADD THIS
+import ProtectedRoute from "./ProtectedRoute";
 
 const AppRouter = () => {
   return (
@@ -137,11 +140,7 @@ const AppRouter = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
 
-
-        {/* ======================== */}
-        {/*   PROTECTED ADMIN ROUTES */}
-        {/* ======================== */}
-
+        {/* 🔐 PROTECTED ROUTES (Admin Only) */}
         <Route
           path="/dashboard"
           element={
@@ -175,7 +174,6 @@ const AppRouter = () => {
           }
         />
 
-        {/* Receptionists */}
         <Route
           path="/receptionists"
           element={
@@ -302,17 +300,6 @@ const AppRouter = () => {
         />
 
         <Route
-          path="/add-testimonial"
-          element={
-            <ProtectedRoute>
-              <AdminLayout>
-                <AddTestimonial />
-              </AdminLayout>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
           path="/edit-testimonial/:id"
           element={
             <ProtectedRoute>
@@ -323,6 +310,16 @@ const AppRouter = () => {
           }
         />
 
+        <Route
+          path="/add-testimonial"
+          element={
+            <ProtectedRoute>
+              <AdminLayout>
+                <AddTestimonial />
+              </AdminLayout>
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );

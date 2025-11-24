@@ -1736,7 +1736,7 @@ const popup = await Swal.fire({
               onClick={handleConfirmBooking}
               className="bg-[#006600] text-white px-6 py-2 "
             >
-              Confirm Booking
+              Deposit Confirmed
             </button>
           )}
 
@@ -1746,7 +1746,7 @@ const popup = await Swal.fire({
               onClick={handleGuaranteeBooking}
               className="bg-blue-700 text-white px-6 py-2 "
             >
-              Guarantee Booking
+              Full Payment Confimed
             </button>
           )}
 
