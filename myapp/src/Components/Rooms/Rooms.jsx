@@ -2336,7 +2336,7 @@ const Rooms = () => {
 
         {/* ===== ROOMS SECTION ===== */}
         <section
-          className="relative w-full overflow-hidden mt-[-163px] md:mt-[-135px] lg:mt-[-143px] xl:mt-[-57px] h-[880px] lg:h-[700px]"
+          className="relative w-full overflow-hidden mt-[-164px] md:mt-[-135px] lg:mt-[-143px] xl:mt-[-57px] h-[880px] lg:h-[700px]"
         >
           <div className="absolute inset-0 grid grid-cols-1 lg:grid-cols-2 h-full">
             {rooms.map((r) => {
@@ -2360,16 +2360,16 @@ const Rooms = () => {
                     <div className="text-center translate-y-[200px] group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                       <Link
                         to={`/room_details2/${r._id}`}
-                        className="w-[50px] h-[50px] rounded-full bg-white dark:bg-lightBlack mb-6 grid place-items-center mx-auto hover:scale-105 transition-transform duration-200"
+                        className="w-[50px] h-[50px] rounded-full bg-white dark:bg-white mb-6 grid place-items-center mx-auto hover:scale-105 transition-transform duration-200"
                       >
-                        <AiOutlineEye size={20} className="text-[#006600]" />
+                        <AiOutlineEye size={20} className="text-[#006600] dark:text-black dark:bg:white" />
                       </Link>
 
                       <div className="bg-white dark:bg-lightBlack text-center py-10">
                         <h4 className="text-lg md:text-xl lg:text-2xl font-medium text-lightBlack dark:text-white">
                           {r.roomType}
                         </h4>
-                        <p className="mt-2 text-sm text-gray dark:text-lightGray font-normal">
+                        <p className="mt-2 text-sm text-gray dark:text-[#D8D8D8] font-normal">
                           Nu {r.price} (USD {priceUSD}++)
                         </p>
                       </div>

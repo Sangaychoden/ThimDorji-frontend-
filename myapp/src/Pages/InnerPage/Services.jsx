@@ -261,7 +261,7 @@ const Services = () => {
     <section className="bg-white text-black font-inter">
       <BreadCrumb title="services" />
 
-      <div className="bg-white">
+      <div className="bg-white dark:bg-black ">
 <section className="Container py-10 md:py-0 md:pb-[120px] lg:py-[80px]">
           {/* section title */}
           <div
@@ -270,10 +270,10 @@ const Services = () => {
             data-aos-duration="1000"
           >
             <div className="md:w-[450px]">
-              <h5 className="text-base leading-[26px] font-medium mb-[14px] uppercase">
+              <h5 className="text-base leading-[26px] font-medium mb-[14px] dark:text-[#E3E3E3] uppercase">
                 SERVICES
               </h5>
-              <h1 className="text-[22px] sm:text-2xl md:text-3xl 2xl:text-[38px] leading-[38px] lg:leading-[44px] font-semibold">
+              <h1 className="text-[22px] sm:text-2xl md:text-3xl 2xl:text-[38px] dark:text-white  leading-[38px] lg:leading-[44px] font-semibold">
                 ENJOY BEST QUALITY FACILITIES
               </h1>
             </div>
@@ -283,7 +283,7 @@ const Services = () => {
           <div>
             {visibleFacilities.map((facility, index) => (
               <div key={facility._id || index}>
-                <hr className="text-[#e8e8e8] my-10" />
+                <hr className="text-[#e8e8e8] dark:text-[#808080] my-10" />
 
                 {/* Alternate layout every section on md+ screens */}
                 <div
@@ -300,25 +300,25 @@ const Services = () => {
                       alt={facility.title || "Facility"}
                       className="w-full h-full object-cover"
                     />
-                    <div className="hidden md:block absolute -top-[0px] md:-right-[12%] -right-[7%]">
-                      <h2 className="text-3xl md:text-4xl lg:text-[40px] leading-[38px]">
+                    <div className="hidden md:block absolute -top-[0px] md:-right-[12%]  -right-[7%]">
+                      <h2 className="text-3xl dark:text-white md:text-4xl lg:text-[40px] leading-[38px] ">
                         {String(index + 1).padStart(2, "0")}
                       </h2>
-                    </div>
+                    </div> 
                   </div>
 
                   {/* Details */}
                   <div className="relative md:ml-[60px] lg:ml-[107px] mt-5 md:mt-0 h-full">
-                    <h4 className="text-base font-semibold leading-[26px] pb-[6px] uppercase mt-2 md:mt-0">
+                    <h4 className="text-base font-semibold dark:text-[#E3E3E3] leading-[26px] pb-[6px] uppercase mt-2 md:mt-0">
                       {facility.title || "Facility"}
                     </h4>
-                    <h1 className="text-2xl md:text-3xl 2xl:text-[32px] leading-[26px] font-semibold">
+                    <h1 className="text-2xl md:text-3xl 2xl:text-[32px] dark:text-white leading-[26px] font-semibold">
                       <Link to={`/service_details/${facility._id}`}>
                         {facility.title || "Service"}
                       </Link>
                     </h1>
 
-                    <p className="text-sm sm:text-base leading-[26px] font-normal my-10 lg:mt-[46px] lg:mb-[40px] before:absolute before:h-[30px] before:left-0 before:top-[-35px] before:bg-[#ddd] before:w-[1px] relative">
+                    <p className="text-sm sm:text-base leading-[26px] dark:text-white font-normal my-10 lg:mt-[46px] lg:mb-[40px] before:absolute before:h-[30px] before:left-0 before:top-[-35px] before:bg-[#ddd] before:w-[1px] relative">
                       {truncateText(facility.description) ||
                         "No description available for this facility."}
                     </p>
@@ -327,7 +327,7 @@ const Services = () => {
                       to={`/service_details/${facility._id}`}
                       aria-label={`Read more about ${facility.title || "Facility"}`}
                     >
-                      <HiArrowLongRight size={40} className="hover:opacity-70" />
+                      <HiArrowLongRight size={40} className="hover:opacity-70 dark:text-white" />
                     </Link>
                   </div>
                 </div>

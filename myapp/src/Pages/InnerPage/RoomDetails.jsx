@@ -171,7 +171,7 @@ const RoomDetails = () => {
               <h2 className="py-2 font-Arial text-4xl font-semibold text-lightBlack dark:text-white">
                 {room.roomType}
               </h2>
-              <p className="text-sm lg:text-base leading-6 text-[#808080] dark:text-lightGray">
+              <p className="text-sm lg:text-base leading-6 text-[#808080] dark:text-[#D9D9D9]">
                 {room.roomDetails}
               </p>
 
@@ -195,8 +195,8 @@ const RoomDetails = () => {
                 <ul className="space-y-2">
                   {room.roomFeatures?.split(",").map((feature, i) => (
                     <li key={i} className="flex items-center">
-                      <BsCheck2 size={16} className="text-[#006600] mr-2" />
-                      <span className="text-sm text-[#808080] dark:text-lightGray">
+                      <BsCheck2 size={16} className="text-[#006600] dark:text-[#B3B3B3] mr-2" />
+                      <span className="text-sm text-[#808080] dark:text-[#D9D9D9]">
                         {feature.trim()}
                       </span>
                     </li>
@@ -212,8 +212,8 @@ const RoomDetails = () => {
                 <ul className="space-y-2">
                   {room.bathroomAmenities?.split(",").map((item, i) => (
                     <li key={i} className="flex items-center">
-                      <BsCheck2 size={16} className="text-[#006600] mr-2" />
-                      <span className="text-sm text-[#808080] dark:text-lightGray">
+                      <BsCheck2 size={16} className="text-[#006600] dark:text-[#B3B3B3] mr-2" />
+                      <span className="text-sm text-[#808080] dark:text-[#D9D9D9]">
                         {item.trim()}
                       </span>
                     </li>
@@ -244,14 +244,14 @@ const RoomDetails = () => {
 
           {/* ===== RIGHT COLUMN ===== */}
           <div className="col-span-6 md:col-span-3 lg:col-span-2">
-            <div className="bg-[#F5F5F5] dark:bg-normalBlack px-7 py-8 ">
-              <h4 className="text-2xl font-semibold text-lightBlack dark:text-white mb-4">
+            <div className="bg-[#F5F5F5] dark:bg-[#F5F5F5] px-7 py-8 ">
+              <h4 className="text-2xl font-semibold text-lightBlack dark:text-black mb-4">
                 Booking
               </h4>
 
 <div className="flex flex-col gap-4">
   <div>
-    <label className="text-gray-700 dark:text-lightGray mb-1 block">
+    <label className="text-gray-700 dark:text-black mb-1 block">
       Check-in
     </label>
     <ReactDatePicker
@@ -261,14 +261,14 @@ const RoomDetails = () => {
         // Reset checkout if it's before the new check-in
         if (checkOut && date && checkOut < date) setCheckOut(null);
       }}
-      className="w-full border border-gray-300 text-gray-800 bg-white px-3 py-3 focus:ring-2 focus:ring-green-600"
+      className="w-full border border-gray-300 text-gray-800 bg-white  px-3 py-3 focus:ring-2 focus:ring-green-600"
       wrapperClassName="w-full"
       minDate={new Date()} // prevent selecting past dates
       placeholderText="Select check-in date"
     />
   </div>
   <div>
-    <label className="text-gray-700 dark:text-lightGray mb-1 block">
+    <label className="text-gray-700 dark:text-black mb-1 block">
       Check-out
     </label>
     <ReactDatePicker
@@ -291,7 +291,7 @@ const RoomDetails = () => {
                   { label: "Rooms", value: roomCount, set: setRoomCount, min: 1 },
                 ].map(({ label, value, set, min }, i) => (
                   <div className="flex justify-between items-center" key={i}>
-                    <span className="text-gray-700 dark:text-lightGray w-24">
+                    <span className="text-gray-700 dark:text-black w-24">
                       {label}
                     </span>
                     <div className="flex items-center gap-2">
@@ -301,7 +301,7 @@ const RoomDetails = () => {
                       >
                         -
                       </button>
-                      <span className="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-500  text-gray-800 dark:text-white min-w-[40px] text-center">
+                      <span className="px-4 py-2 bg-white dark:bg-white dark:text-black border border-gray-500  text-gray-800 min-w-[40px] text-center">
                         {value}
                       </span>
                       <button
@@ -317,7 +317,7 @@ const RoomDetails = () => {
 
               {/* Total */}
               <div className="mt-8 flex justify-between items-center border-t border-gray-300 pt-4">
-                <label className="text-base font-semibold text-gray-700 dark:text-lightGray">
+                <label className="text-base font-semibold text-gray-700 dark:text-black">
                   Total Amount
                 </label>
                 <span className="text-xl font-bold text-[#444]">
@@ -337,38 +337,38 @@ const RoomDetails = () => {
             </div>
 
             {/* Quick Info */}
-            <div className="mt-5">
+            <div className="mt-10">
               <h4 className="text-xl sm:text-2xl font-semibold text-lightBlack dark:text-white mb-2">
                 Room Details
               </h4>
               <div className="grid items-center">
-                <div className="flex items-center py-4 border-b border-gray-300">
-                  <FaDollarSign className="text-[#006600] w-5 h-5 mr-3" />
-                  <span className="text-sm text-[#808080] dark:text-lightGray">
+                <div className="flex items-center py-4 border-b border-[#808080]">
+                  <FaDollarSign className="text-[#006600] w-5 h-5 mr-3 dark:text-[#B3B3B3]" />
+                  <span className="text-sm text-[#808080] dark:text-white">
                     Nu {room.price?.toLocaleString()}
                   </span>
                 </div>
-                <div className="flex items-center py-4 border-b border-gray-300">
-                  <FaVectorSquare className="text-[#006600] w-5 h-5 mr-3" />
-                  <span className="text-sm text-[#808080] dark:text-lightGray">
+                <div className="flex items-center py-4 border-b border-[#808080]">
+                  <FaVectorSquare className="text-[#006600] w-5 h-5 mr-3 dark:text-[#B3B3B3]" />
+                  <span className="text-sm text-[#808080] dark:text-white">
                     {room.size} SQ.FT
                   </span>
                 </div>
-                <div className="flex items-center py-4 border-b border-gray-300">
-                  <FaUserFriends className="text-[#006600] w-5 h-5 mr-3" />
-                  <span className="text-sm text-[#808080] dark:text-lightGray">
+                <div className="flex items-center py-4 border-b border-[#808080]">
+                  <FaUserFriends className="text-[#006600] w-5 h-5 mr-3 dark:text-[#B3B3B3]" />
+                  <span className="text-sm text-[#808080] dark:text-white">
                     {room.occupancy} Guests
                   </span>
                 </div>
-                <div className="flex items-center py-4 border-b border-gray-300">
-                  <FaBed className="text-[#006600] w-5 h-5 mr-3" />
-                  <span className="text-sm text-[#808080] dark:text-lightGray">
+                <div className="flex items-center py-4 border-b border-[#808080]">
+                  <FaBed className="text-[#006600] w-5 h-5 mr-3 dark:text-[#B3B3B3]" />
+                  <span className="text-sm text-[#808080] dark:text-white">
                     {room.beds} {room.beds > 1 ? "Beds" : "Bed"}
                   </span>
                 </div>
-                <div className="flex items-center py-4 border-b border-gray-300">
-                  <FaWater className="text-[#006600] w-5 h-5 mr-3" />
-                  <span className="text-sm text-[#808080] dark:text-lightGray">
+                <div className="flex items-center py-4 border-b border-[#808080]">
+                  <FaWater className="text-[#006600] w-5 h-5 mr-3 dark:text-[#B3B3B3]" />
+                  <span className="text-sm text-[#808080] dark:text-white">
                     {room.location}
                   </span>
                 </div>

@@ -601,7 +601,7 @@ const Testimonial = () => {
             {/* Card */}
             <div className="bg-white dark:bg-normalBlack p-6 shadow-md w-full max-w-[310px] h-[320px] flex flex-col justify-between">
               {/* Message */}
-              <p className="font-Arial text-sm leading-[26px] text-black dark:text-lightGray font-normal mb-[10px] overflow-y-auto">
+              <p className="font-Arial text-sm leading-[26px] text-black text-black dark:text-white font-normal mb-[10px] overflow-y-auto">
                 {t.message}
               </p>
 
@@ -615,8 +615,8 @@ const Testimonial = () => {
                   <h4 className="text-base lg:text-[22px] leading-[26px] text-black dark:text-white font-semibold font-Arial">
                     {t.name || "Anonymous"}
                   </h4>
-                  <p className="text-[12px] md:text-base leading-[26px] font-normal text-[#555555] dark:text-lightGray flex items-center">
-                    <span className="w-2 h-[1px] inline-block bg-[#006600] mr-2"></span>
+                  <p className="text-[12px] md:text-base leading-[26px] font-normal text-[#555555] text-black dark:text-[#E8E8E8] flex items-center">
+                    <span className="w-2 h-[1px] inline-block dark:bg-[#D9D9D9] bg-[#006600] mr-2"></span>
                     {formatStayPeriod(t.stayPeriod)}
                   </p>
                 </div>
@@ -641,7 +641,7 @@ const Testimonial = () => {
 <div className="w-full w-[500px] h-[380px] md:h-[380px] sm:h-[450px] flex flex-col items-center">
                     <div className="w-[90%] h-[10px] bg-[#006600] mx-auto"></div>
                     <div className="bg-white dark:bg-normalBlack p-6 md:p-10 relative shadow-md flex flex-col justify-between h-[100%] w-[100%]">
-                      <p className="font-Arial text-sm sm:text-base lg:text-[20px] leading-[26px] text-black dark:text-lightGray italic font-normal xl:text-lg mb-[10px] flex-grow">
+                      <p className="font-Arial text-sm sm:text-base dark:text-white lg:text-[20px] leading-[26px] text-black dark:text-lightGray italic font-normal xl:text-lg mb-[10px] flex-grow">
                         {t.message}
                       </p>
                       <div className="flex items-center space-x-6 mt-4">
@@ -654,8 +654,8 @@ const Testimonial = () => {
                           <h4 className="text-base lg:text-[20px] leading-[26px] text-black dark:text-white font-semibold font-Arial">
                             {t.name || "Anonymous"}
                           </h4>
-                          <p className="pt-1 text-sm md:text-base lg:text-[16px] leading-[26px] font-normal text-[#555555] dark:text-lightGray flex items-center">
-                            <span className="w-5 h-[1px] inline-block bg-[#006600] mr-2"></span>
+                          <p className="pt-1 text-sm md:text-base lg:text-[16px] dark:text-[#E8E8E8] leading-[26px] font-normal text-[#555555] dark:text-lightGray flex items-center">
+                            <span className="w-5 h-[1px] inline-block bg-[#006600] dark:bg-[#D9D9D9]  mr-2"></span>
                             {formatStayPeriod(t.stayPeriod)}
                           </p>
                         </div>

@@ -43,10 +43,10 @@ const ServiceDetails = () => {
     );
 
   return (
-    <section className="bg-white text-gray-700 font-['Inter']">
+    <section className="bg-white  text-gray-700 font-['Inter']">
       <BreadCrumb title="Services Details" />
 
-<div className="py-10 md:py-0 md:pb-[120px] lg:py-[80px] bg-white">
+<div className="py-10 md:py-0 md:pb-[120px] lg:py-[80px] bg-white dark:bg-black">
 
         <div className="Container">
           {/* ✅ Image Slider */}
@@ -72,7 +72,7 @@ const ServiceDetails = () => {
                 {/* Left Arrow */}
                 {facility.images?.length > 1 && (
                   <span
-                    className="w-[40px] h-[40px] bg-white hover:bg-[#006600] grid items-center justify-center absolute bottom-[45%] left-[-50px] group-hover:left-4 transition-all duration-300 cursor-pointer shadow-md -full"
+                    className="w-[40px] h-[40px] bg-white dark:bg-black dark:text-white hover:bg-[#006600] grid items-center justify-center absolute bottom-[45%] left-[-50px] group-hover:left-4 transition-all duration-300 cursor-pointer shadow-md -full"
                     onClick={prevBtn}
                   >
                     <BsArrowLeft size={20} className="text-gray-800 hover:text-white" />
@@ -82,7 +82,7 @@ const ServiceDetails = () => {
                 {/* Right Arrow */}
                 {facility.images?.length > 1 && (
                   <span
-                    className="w-[40px] h-[40px] bg-white hover:bg-[#006600] grid items-center justify-center absolute bottom-[45%] right-[-50px] group-hover:right-4 transition-all duration-300 cursor-pointer shadow-md -full"
+                    className="w-[40px] h-[40px] bg-white hover:bg-[#006600] dark:bg-black dark:text-white grid items-center justify-center absolute bottom-[45%] right-[-50px] group-hover:right-4 transition-all duration-300 cursor-pointer shadow-md -full"
                     onClick={nextBtn}
                   >
                     <BsArrowRight size={20} className="text-gray-800 hover:text-white" />
@@ -94,10 +94,10 @@ const ServiceDetails = () => {
 
           {/* ✅ Facility Description */}
           <div className="pt-5 lg:pt-[45px] pr-3">
-            <h2 className="py-3 font-semibold text-[26px] sm:text-3xl lg:text-4xl text-black">
+            <h2 className="py-3 font-semibold text-[26px] dark:text-white sm:text-3xl lg:text-4xl text-black">
               {facility.title}
             </h2>
-            <p className="text-base leading-7 text-gray-600 font-normal">
+            <p className="text-base leading-7 dark:text-[#E3E3E3] text-gray-600 font-normal">
               {facility.description}
             </p>
           </div>
